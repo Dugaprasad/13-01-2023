@@ -1,0 +1,206 @@
+PROGRAM 1:
+Create a class named 'Rectangle' with two data members- length and breadth and a function to calculate the area which is 'length*breadth'. The class has three constructors which are :
+1 - having no parameter - values of both length and breadth are assigned zero.
+2 - having two numbers as parameters - the two numbers are assigned as length and breadth respectively.
+3 - having one number as parameter - both length and breadth are assigned that number.
+Now, create objects of the 'Rectangle' class having none, one and two parameters and print their areas.
+
+ANSWER:
+#include<iostream>
+using namespace std;
+class rectangle
+{
+	private:
+		int length;
+		int breadth;
+	public:
+		rectangle()
+		{
+			length=0;
+			breadth=0;
+		}
+		int getArea()
+		{
+			return length*breadth;
+		}		
+};
+int main()
+{
+		rectangle item;
+		cout<<item.getArea();
+}
+
+PROGRAM 3
+Create a class to print the area of a square and a rectangle. The class has two functions with the same name but different number of parameters. The function for printing the area of rectangle has two parameters which are its length and breadth respectively while the other function for printing the area of square has one parameter which is the side of the square.
+
+ANSWER:
+
+#include <iostream>
+using namespace std;
+class Area
+{
+public:
+    void output(int l, int b)
+    {
+        cout<<"Area of Rectangle = "<<l*b<<endl;
+    }
+void output(int a)
+    {
+        cout<<"Area of Square = "<<a*a<< endl;
+    }
+};
+int main()
+{
+    Area obj;
+    obj.output(3,3);
+    obj.output(3);
+}
+
+PROGRAM 4
+A class has an integer data member 'i' and a function named 'printNum' to print the value of 'i'. Its subclass also has an integer data member 'j' and a function named 'printNum' to print the value of 'j'. Make an object of the subclass and use it to assign a value to 'i' and to 'j'. Now call the function 'printNum' by this object.
+
+ANSWERS:
+#include <iostream>
+#include <string>
+using namespace std;
+class IntI{
+private:
+	int i;
+public:
+	IntI(int i)
+	{
+		this->i=i;
+	}
+	void printNum()
+	{
+		cout<<"i = "<<i<<"\n";
+	}
+};
+class IntJ:public IntI
+{
+private:
+	int j;
+public:
+	IntJ(int i,int j):IntI(i)
+	{
+		this->j=j;
+	}
+	void printNum(){
+		IntI::printNum();
+		cout<<"j = "<<j<<"\n";
+	}
+};
+int main() {
+	IntJ intJ(3,3);
+	intJ.printNum();
+	system("pause");
+	return 0;
+}
+
+PROGRAM  5
+Create a class 'Student' with three data members which are name, age and address. The constructor of the class assigns default values to name as "unknown", age as '0' and address as "not available". It has two functions with the same name 'setInfo'. First function has two parameters for name and age and assigns the same whereas the second function takes has three parameters which are assigned to name, age and address respectively. Print the name, age and address of 10 students.
+Hint - Use array of objects
+
+ANSWER:
+#include<iostream>
+using namespace std;
+class student{
+    public:
+        string name,addr;
+        int age;
+        
+        student()
+        {
+            name="unknown";
+            addr="-";
+            age=0;
+        }
+        void details(string n, int ag)
+        {
+            name = n;
+            age = ag;
+        }
+        void details(string n, string a, int ag)
+        {
+            name = n;
+            addr = a;
+            age = ag;
+        }
+        void details()
+        {
+            cout << "Name: "<< name<<endl;
+            cout<< "age: "<< age<<endl;
+            cout << "Address: "<< addr<< endl;
+        }
+};
+
+int main()
+{
+    int x;
+    cout << "Enter no of students \n";
+    cin>> x;
+    student s[x];
+    string name,addr;
+    int i,age;   
+    for(i=0;i<x;i++)
+    {
+        cout << "Enter name and age \n";
+        cin.ignore();
+        getline(cin,name);
+        cin>>age;
+
+        s[i].details(name, age);
+    }   
+    for(i=0;i<x;i++)
+    {
+        s[i].getinfo();
+    }
+    
+    for(i=0;i<x;i++)
+    {
+        cout << "Enter name,address and age \n";
+        cin.ignore();
+        getline(cin,name);
+        cin.ignore();
+        getline(cin,addr);
+        cin>>age;
+        s[i].details(name,addr,age);
+    }
+    
+    for(i=0;i<x;i++)
+    {
+        s[i].getinfo();
+    }
+    return 0;
+}
+
+PROGRAM 2
+Create a class named 'Programming'. While creating an object of the class, if nothing is passed to it, then the message "I love programming languages" should be printed. If some String is passed to it, then in place of "programming languages" the name of that String variable should be printed.
+For example, while creating the object if we pass "cpp", then "I love cpp" should be printed.
+
+ANSWER:
+#include<iostream>
+#include<string.h>
+#include<string>
+
+using namespace std;
+class programming
+{
+	public:
+	programming()
+		{ 
+		cout<<"I love programming languages"<<endl ;
+		}
+	programming(char str[])
+		{
+			cout<<"I love "<<str<<endl;
+		}
+	};
+
+int main()
+{
+ programming o1;
+ char s[100];
+ cin>>s;
+programming o2(s);
+}
